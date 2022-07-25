@@ -1,21 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import {SuperButton} from "./Components/Butons/Button";
-import {SuperInput} from "./Components/Inputs/Input";
+import {Counter} from "./Components/Counter/Counter";
+
 
 function App() {
 
 
     return (
         <div className="App">
-            <SuperInput
+            <Counter
 
             />
-
-            <SuperButton
-
-            />
-
         </div>
     );
 }
