@@ -1,15 +1,20 @@
-import React, {useEffect, useState} from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
 import st from './Input.module.css'
 
 
-export const SuperInput = () => {
-    const [number, setNumber] = useState(0)
+export type IncrementPropsType = {
+    value: number
+    changeIncrement: (change: string) => void
+}
 
-    const changeIncrementHandler = () => {
+export const SuperInput = (props: IncrementPropsType) => {
 
+
+    const changeIncrementHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        props.changeIncrement(e.currentTarget.value)
     }
 
-        return (
+    return (
         <div className={st.inputBlock}>
             <div className={st.inputNumber}>
                 <input
@@ -19,12 +24,13 @@ export const SuperInput = () => {
                     type="number"
                 />
             </div>
-           <div className={st.inputIncrement}>
-               <input
-                   onChange={changeIncrementHandler}
-                   value={number}
-               />
-           </div>
+            <div className={st.inputIncrement}>
+                <input
+                    type="text"
+                    value={props.value}
+                    onChange={changeIncrementHandler}
+                />
+            </div>
         </div>
     )
 }

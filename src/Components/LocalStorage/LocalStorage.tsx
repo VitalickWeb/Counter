@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 
 // function localStorage() {
 //     const [value, setValue] = useState(0)
+
     //useEffect это хук который так же идет из react. Первым параметром он принимает в себя колбэк, а вторым зависимости
 
     // useEffect( () => {
@@ -36,7 +37,7 @@ import React, {useEffect, useState} from "react";
     //     let valueAsString = localStorage.getItem('counterValue')//указываем в параметре key который мы должны получить
     //
     //     if (valueAsString) {
-    //         let newValue = JSON.parse(valueAsString)//parse преобразование строки  в то что нам нужно, объект ил массив например
+    //         let newValue = JSON.parse(valueAsString)//parse преобразование строки  в то что нам нужно, объект или массив например
     //         setValue(newValue)
     //     }
     // }
