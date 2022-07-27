@@ -1,32 +1,24 @@
 import React from "react";
 import st from './Button.module.css'
 
-type IncrementPropsType = {
-    value: number
-    clickIncrement: (value: number) => void
-    resetIncrement: (value: number) => void
+export type ButtonPropsType = {
+    name: string
+    clickIncrement: () => void
+    disabled: boolean
 }
 
-export const SuperButton = (props: IncrementPropsType) => {
+export const SuperButton = ({clickIncrement, disabled, name}: ButtonPropsType) => {
 
-    const clickIncrementButtonHandler = () => {
-        props.clickIncrement(props.value)
-    }
-
-    const resetIncrementHandler = () => {
-        props.resetIncrement(props.value)
+    const clickIncrementHandler = () => {
+        clickIncrement()
     }
 
     return (
-        <div className={st.buttonBlock}>
-            <div className={st.buttonNumber}>
-
-            </div>
-          <div className={st.buttonsIncrement}>
-              <button>set</button>
-              <button onClick={clickIncrementButtonHandler}>inc</button>
-              <button onClick={resetIncrementHandler}>reset</button>
-          </div>
+        <div className={st.button}>
+            <button
+                onClick={clickIncrementHandler}
+                disabled={disabled}>{name}
+            </button>
         </div>
     )
 }

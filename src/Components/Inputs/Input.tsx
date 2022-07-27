@@ -4,33 +4,23 @@ import st from './Input.module.css'
 
 export type IncrementPropsType = {
     value: number
+    type: string
     changeIncrement: (change: string) => void
 }
 
-export const SuperInput = (props: IncrementPropsType) => {
-
+export const SuperInput = ({value, type, changeIncrement}: IncrementPropsType) => {
 
     const changeIncrementHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        props.changeIncrement(e.currentTarget.value)
+        changeIncrement(e.currentTarget.value)
     }
 
     return (
         <div className={st.inputBlock}>
-            <div className={st.inputNumber}>
-                <input
-                    type="number"
-                />
-                <input
-                    type="number"
-                />
-            </div>
-            <div className={st.inputIncrement}>
-                <input
-                    type="text"
-                    value={props.value}
-                    onChange={changeIncrementHandler}
-                />
-            </div>
+            <input
+                type={type}
+                value={value}
+                onChange={changeIncrementHandler}
+            />
         </div>
     )
 }
