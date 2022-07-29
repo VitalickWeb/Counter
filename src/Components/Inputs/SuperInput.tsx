@@ -1,5 +1,5 @@
 import React, {ChangeEvent} from "react";
-import st from './Input.module.css'
+import st from './SuperInput.module.css'
 
 
 export type IncrementPropsType = {
@@ -9,7 +9,6 @@ export type IncrementPropsType = {
 }
 
 export const SuperInput = ({value, type, changeIncrement}: IncrementPropsType) => {
-
     const changeIncrementHandler = (e: ChangeEvent<HTMLInputElement>) => {
         changeIncrement(e.currentTarget.value)
     }

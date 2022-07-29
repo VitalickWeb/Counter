@@ -1,5 +1,5 @@
 import React from "react";
-import st from './Button.module.css'
+import st from './SuperButton.module.css'
 
 export type ButtonPropsType = {
     name: string

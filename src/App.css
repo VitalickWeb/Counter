@@ -1,6 +1,13 @@
 .App {
     width: 100%;
-    height: auto;
-
+    height: 500px;
+    background-color: rgba(4, 22, 38, 0.58);
+    display: flex;
+    align-items: center;
 }
 
+.mainContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
