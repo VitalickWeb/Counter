@@ -15,16 +15,16 @@ function App() {
         localStorage.setItem('counterValue', JSON.stringify(number))
     }, [number])
 
-    const endPointReference = () => {
-
+    const maxPointReference = (max: string) => {
+        setMaxValue(Number(max))
     }
 
-    const referencePoint = () => {
-
+    const referencePoint = (start: string) => {
+        setStartValue(Number(start))
     }
 
     const changeIncrement = (change: string) => {
-        setNumber(Number(change))
+         setNumber(Number(change))
     }
 
     const clickIncrement = () => {
@@ -42,8 +42,10 @@ function App() {
     return (
         <div className="App">
             <Counter
+                maxValue={maxValue}
+                startValue={startValue}
                 value={number}
-                endPointReference={endPointReference}
+                maxPointReference={maxPointReference}
                 referencePoint={referencePoint}
                 setLocalStorage={setLocalStorage}
                 changeIncrement={changeIncrement}

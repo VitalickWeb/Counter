@@ -4,9 +4,11 @@ import {SuperButton} from "../Butons/Button";
 import st from './Counter.module.css'
 
 export type CounterValuePropsType = {
+    maxValue: number
+    startValue: number
     value: number
-    endPointReference: () => void
-    referencePoint: () => void
+    maxPointReference: (max: string) => void
+    referencePoint: (start: string) => void
     setLocalStorage: () => void
     changeIncrement: (change: string) => void
     clickIncrement: () => void
@@ -15,8 +17,10 @@ export type CounterValuePropsType = {
 }
 
 export const Counter = ({
+                            maxValue,
+                            startValue,
                             value,
-                            endPointReference,
+                            maxPointReference,
                             referencePoint,
                             setLocalStorage,
                             clickIncrement,
@@ -31,13 +35,13 @@ export const Counter = ({
                 <div>
                     <SuperInput
                         type={'number'}
-                        value={value}
-                        changeIncrement={endPointReference}
+                        value={maxValue}
+                        changeIncrement={maxPointReference}
                     />
                     <SuperInput
                         type={'number'}
-                        value={value}
-                        changeIncrement={changeIncrement}
+                        value={startValue}
+                        changeIncrement={referencePoint}
                     />
                 </div>
                 <div>
