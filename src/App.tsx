@@ -9,6 +9,7 @@ function App() {
     const [startValue, setStartValue] = useState(0)
     const [number, setNumber] = useState(0)
     const [disabled, setDisabled] = useState(false)
+    const [message, setMessage] = useState('')
 
     useEffect(() => {
         localStorage.setItem('counterValue', JSON.stringify(number))
@@ -16,10 +17,12 @@ function App() {
 
     const maxPointReference = (max: string) => {
         setMaxValue(Number(max))
+
     }
 
     const referencePoint = (start: string) => {
         setStartValue(Number(start))
+
     }
 
     const setLocalStorage = () => {
@@ -52,6 +55,7 @@ function App() {
                     referencePoint={referencePoint}
                     setLocalStorage={setLocalStorage}
                     disabled={disabled}
+                    message={message}
                 />
                 <Counter
                     value={number}
@@ -59,6 +63,7 @@ function App() {
                     clickIncrement={clickIncrement}
                     resetIncrement={resetIncrement}
                     disabled={disabled}
+                    message={message}
                 />
             </div>
         </div>

@@ -9,6 +9,7 @@ export type CounterValuePropsType = {
     clickIncrement: () => void
     resetIncrement: () => void
     disabled: boolean
+    message: string
 }
 
 export const Counter = ({
@@ -16,12 +17,14 @@ export const Counter = ({
                             clickIncrement,
                             changeIncrement,
                             resetIncrement,
-                            disabled
+                            disabled,
+                            message
                         }: CounterValuePropsType) => {
 
     return (
         <div className={st.blockCounter}>
             <SuperInput
+                message={message}
                 type={'text'}
                 value={value}
                 changeIncrement={changeIncrement}

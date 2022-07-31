@@ -10,6 +10,7 @@ export type SettingsCounterPropsType = {
     referencePoint: (start: string) => void
     setLocalStorage: () => void
     disabled: boolean
+    message: string
 }
 
 export const SettingsCounter = ({
@@ -18,17 +19,20 @@ export const SettingsCounter = ({
                                     maxPointReference,
                                     referencePoint,
                                     setLocalStorage,
-                                    disabled
+                                    disabled,
+                                    message
                                 }: SettingsCounterPropsType) => {
     return (
         <div className={st.blockSettings}>
             <div>
                 <SuperInput
+                    message={message}
                     type={'number'}
                     value={maxValue}
                     changeIncrement={maxPointReference}
                 />
                 <SuperInput
+                    message={message}
                     type={'number'}
                     value={startValue}
                     changeIncrement={referencePoint}

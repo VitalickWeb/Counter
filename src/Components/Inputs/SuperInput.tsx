@@ -6,9 +6,10 @@ export type IncrementPropsType = {
     value: number
     type: string
     changeIncrement: (change: string) => void
+    message: string
 }
 
-export const SuperInput = ({value, type, changeIncrement}: IncrementPropsType) => {
+export const SuperInput = ({value, type, changeIncrement, message}: IncrementPropsType) => {
     const changeIncrementHandler = (e: ChangeEvent<HTMLInputElement>) => {
         changeIncrement(e.currentTarget.value)
     }
@@ -16,6 +17,7 @@ export const SuperInput = ({value, type, changeIncrement}: IncrementPropsType) =
     return (
         <div className={st.inputBlock}>
             <input
+                className={message === 'Incorrect values' ? st.error : ''}
                 type={type}
                 value={value}
                 onChange={changeIncrementHandler}
