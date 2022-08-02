@@ -23,23 +23,29 @@ export const Counter = ({
 
     return (
         <div className={st.blockCounter}>
-            <SuperInput
-                message={message}
-                type={'text'}
-                value={value}
-                changeIncrement={changeIncrement}
-            />
-
-            <SuperButton
-                name={'inc'}
-                clickIncrement={clickIncrement}
-                disabled={disabled}
-            />
-            <SuperButton
-                name={'reset'}
-                clickIncrement={resetIncrement}
-                disabled={disabled}
-            />
+            <div className={st.inputInc}>
+                <SuperInput
+                    message={message}
+                    type={'text'}
+                    value={value}
+                    changeIncrement={changeIncrement}
+                />
+            </div>
+            <div className={st.blockButtonInc}>
+                <div className={st.buttonInc}>
+                    <SuperButton
+                        name={'inc'}
+                        clickIncrement={clickIncrement}
+                        disabled={disabled}
+                    />
+                </div>
+                <div className={st.buttonReset}>
+                    <SuperButton
+                        name={'reset'}
+                        clickIncrement={resetIncrement}
+                    />
+                </div>
+            </div>
         </div>
     )
 }

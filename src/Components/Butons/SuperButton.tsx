@@ -4,7 +4,7 @@ import st from './SuperButton.module.css'
 export type ButtonPropsType = {
     name: string
     clickIncrement: () => void
-    disabled: boolean
+    disabled?: boolean
 }
 
 export const SuperButton = ({clickIncrement, disabled, name}: ButtonPropsType) => {
@@ -14,8 +14,9 @@ export const SuperButton = ({clickIncrement, disabled, name}: ButtonPropsType) =
     }
 
     return (
-        <div className={st.button}>
+        <div>
             <button
+                className={''}
                 onClick={clickIncrementHandler}
                 disabled={disabled}>{name}
             </button>

@@ -24,21 +24,35 @@ export const SettingsCounter = ({
                                 }: SettingsCounterPropsType) => {
     return (
         <div className={st.blockSettings}>
-            <div>
-                <SuperInput
-                    message={message}
-                    type={'number'}
-                    value={maxValue}
-                    changeIncrement={maxPointReference}
-                />
-                <SuperInput
-                    message={message}
-                    type={'number'}
-                    value={startValue}
-                    changeIncrement={referencePoint}
-                />
+            <div className={st.subBlockSettings}>
+                <div className={st.blockInput}>
+                    <div className={st.inputMax}>
+                        <div className={st.itemText}>
+                            max value:
+                        </div>
+                        <div className={st.itemInput}>
+                            <SuperInput
+                                message={message}
+                                type={'number'}
+                                value={maxValue}
+                                changeIncrement={maxPointReference}
+                            />
+                        </div>
+                    </div>
+                    <div className={st.inputStart}>
+                        <div className={st.itemText}>
+                            <span className={st.text}>start value:</span>
+                        </div>
+                        <SuperInput
+                            message={message}
+                            type={'number'}
+                            value={startValue}
+                            changeIncrement={referencePoint}
+                        />
+                    </div>
+                </div>
             </div>
-            <div>
+            <div className={st.buttonSet}>
                 <SuperButton
                     name={'set'}
                     clickIncrement={setLocalStorage}

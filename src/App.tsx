@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import './App.css';
+import './App.module.css';
 import {Counter} from "./Components/Counter/Counter";
 import {SettingsCounter} from "./Components/SettingsCounter/SettingsCounter";
+import st from './App.module.css'
 
 
 function App() {
@@ -21,8 +22,14 @@ function App() {
     }
 
     const referencePoint = (start: string) => {
-        setStartValue(Number(start))
-
+        //setStartValue(Number(start))
+        if (startValue >= 0) {
+            setStartValue(Number(start))
+        } else {
+            setStartValue(Number(start))
+            //setMessage()
+            setDisabled(!disabled)
+        }
     }
 
     const setLocalStorage = () => {
@@ -37,17 +44,20 @@ function App() {
         if (number < 5) {
             setNumber(number + 1)
         } else {
-            setNumber(number)
+            setDisabled(!disabled)
+            setMessage("Incorrect values")
         }
     }
 
     const resetIncrement = () => {
+        setMessage("")
+        setDisabled(false)
         setNumber(0)
     }
 
     return (
-        <div className="App">
-            <div className={"mainContainer"}>
+        <div className={st.App}>
+            <div className={st.mainContainer}>
                 <SettingsCounter
                     maxValue={maxValue}
                     startValue={startValue}

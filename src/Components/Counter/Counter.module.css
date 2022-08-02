@@ -1,0 +1,12 @@
+.blockCounter {
+
+}
+
+.inputInc {
+    margin-bottom: 10px;
+}
+
+.blockCounter .blockButtonInc {
+    display: flex;
+    justify-content: space-around;
+}

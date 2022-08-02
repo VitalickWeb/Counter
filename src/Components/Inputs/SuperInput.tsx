@@ -1,7 +1,6 @@
 import React, {ChangeEvent} from "react";
 import st from './SuperInput.module.css'
 
-
 export type IncrementPropsType = {
     value: number
     type: string
@@ -15,7 +14,7 @@ export const SuperInput = ({value, type, changeIncrement, message}: IncrementPro
     }
 
     return (
-        <div className={st.inputBlock}>
+        <div>
             <input
                 className={message === 'Incorrect values' ? st.error : ''}
                 type={type}
