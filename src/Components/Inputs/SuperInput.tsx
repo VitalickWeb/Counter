@@ -1,24 +1,27 @@
 import React, {ChangeEvent} from "react";
-import st from './SuperInput.module.css'
+import st from '../Counter/Counter.module.css'
 
 export type IncrementPropsType = {
-    value: number
+    incValue: number
     type: string
     changeIncrement: (change: string) => void
     message: string
+    className?: string
 }
 
-export const SuperInput = ({value, type, changeIncrement, message}: IncrementPropsType) => {
+export const SuperInput = ({incValue, type, changeIncrement, className}: IncrementPropsType) => {
     const changeIncrementHandler = (e: ChangeEvent<HTMLInputElement>) => {
         changeIncrement(e.currentTarget.value)
     }
 
+    const style = `${st.inputInc} ${className}`
+
     return (
-        <div>
+        <div >
             <input
-                className={message === 'Incorrect values' ? st.error : ''}
+                className={style}//в атрибут className попадает значение из всех инпутов, для универсального инпута
                 type={type}
-                value={value}
+                value={incValue}//считывается значение из state number
                 onChange={changeIncrementHandler}
             />
         </div>

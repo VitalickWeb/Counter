@@ -18,25 +18,30 @@
 }
 
 .blockSettings .blockInput {
-    width: 100%;
+    width: 124%;
 }
 
 .blockSettings .blockInput .inputMax {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .blockSettings .blockInput .inputStart {
     display: flex;
+    justify-content: space-between;
+}
+
+.inputMax .itemText, .inputStart .itemText {
+    color: gold;
 }
 
 .blockSettings .blockInput .inputMax input {
     outline: none;
     text-align: center;
+    font-weight: bold;
     color: #677;
     padding-left: 10px;
     border-radius: 4px;
-    background-color: snow;
     border: 1px solid gold;
     width: 50%;
     -webkit-box-shadow: 0px 0px 18px -5px rgba(91, 99, 116, 0.72) inset;
@@ -44,18 +49,29 @@
     box-shadow: 0px 0px 18px -5px rgba(91, 99, 116, 0.72) inset;
 }
 
+.line {
+    width: 75%;
+    border: 0.5px solid gold;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
 .blockSettings .blockInput .inputStart input {
+    font-weight: bold;
     outline: none;
     text-align: center;
     color: #677;
     padding-left: 10px;
     border-radius: 4px;
-    background-color: snow;
     border: 1px solid gold;
     width: 50%;
     -webkit-box-shadow: 0px 0px 18px -5px rgba(91, 99, 116, 0.72) inset;
     -moz-box-shadow: 0px 0px 18px -5px rgba(91, 99, 116, 0.72) inset;
     box-shadow: 0px 0px 18px -5px rgba(91, 99, 116, 0.72) inset;
+}
+
+.errorValue {
+    background-color: salmon;
 }
 
 .blockSettings .buttonSet {

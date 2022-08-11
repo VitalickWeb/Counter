@@ -2,6 +2,7 @@ import React from "react";
 import st from './SettingsCounter.module.css'
 import {SuperInput} from "../Inputs/SuperInput";
 import {SuperButton} from "../Butons/SuperButton";
+import {WordFilter} from "../../App";
 
 export type SettingsCounterPropsType = {
     maxValue: number
@@ -9,7 +10,7 @@ export type SettingsCounterPropsType = {
     maxPointReference: (max: string) => void
     referencePoint: (start: string) => void
     setLocalStorage: () => void
-    disabled: boolean
+    disabled: WordFilter
     message: string
 }
 
@@ -32,23 +33,28 @@ export const SettingsCounter = ({
                         </div>
                         <div className={st.itemInput}>
                             <SuperInput
+                                className={maxValue < 0 ? st.errorValue : ''}
                                 message={message}
                                 type={'number'}
-                                value={maxValue}
+                                incValue={maxValue}
                                 changeIncrement={maxPointReference}
                             />
                         </div>
                     </div>
+                    <div className={st.line}></div>
                     <div className={st.inputStart}>
                         <div className={st.itemText}>
-                            <span className={st.text}>start value:</span>
+                            start value:
                         </div>
-                        <SuperInput
-                            message={message}
-                            type={'number'}
-                            value={startValue}
-                            changeIncrement={referencePoint}
-                        />
+                        <div>
+                            <SuperInput
+                                className={startValue < 0 ? st.errorValue : ''}
+                                message={message}
+                                type={'number'}
+                                incValue={startValue}
+                                changeIncrement={referencePoint}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -56,7 +62,7 @@ export const SettingsCounter = ({
                 <SuperButton
                     name={'set'}
                     clickIncrement={setLocalStorage}
-                    disabled={disabled}
+                    disabled={disabled === 'error'}
                 />
             </div>
         </div>

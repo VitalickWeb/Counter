@@ -16,7 +16,7 @@ export const SuperButton = ({clickIncrement, disabled, name}: ButtonPropsType) =
     return (
         <div>
             <button
-                className={''}
+                className={disabled === true ? st.disable : ''}
                 onClick={clickIncrementHandler}
                 disabled={disabled}>{name}
             </button>

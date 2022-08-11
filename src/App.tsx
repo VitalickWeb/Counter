@@ -4,31 +4,36 @@ import {Counter} from "./Components/Counter/Counter";
 import {SettingsCounter} from "./Components/SettingsCounter/SettingsCounter";
 import st from './App.module.css'
 
+export type WordFilter = "set" | "inc" | "reset" | "error" | "Incorrect value"
 
 function App() {
-    const [maxValue, setMaxValue] = useState(0)
+    const [maxValue, setMaxValue] = useState(5)
     const [startValue, setStartValue] = useState(0)
-    const [number, setNumber] = useState(0)
-    const [disabled, setDisabled] = useState(false)
+    const [incValue, setIncValue] = useState(0)//исходный state счетчика прокидывается в input
+    const [disabled, setDisabled] = useState<WordFilter>('inc')
     const [message, setMessage] = useState('')
+    const [undefinedMax, setUndefinedMax] = useState(5)
+    const [undefinedMin, setUndefinedMin] = useState(0)
 
     useEffect(() => {
-        localStorage.setItem('counterValue', JSON.stringify(number))
-    }, [number])
+        localStorage.setItem('counterValue', JSON.stringify(incValue))
+    }, [incValue])
 
     const maxPointReference = (max: string) => {
         setMaxValue(Number(max))
-
     }
 
     const referencePoint = (start: string) => {
-        //setStartValue(Number(start))
-        if (startValue >= 0) {
+        if (Number(start) < 0) {    //если старт меньше 0 то
             setStartValue(Number(start))
-        } else {
+            setDisabled('error')//дизэйблим кнопки set и inc
+            setMessage("Incorrect values") // пооказываем надпись что значение не корректное
+            setDisabled("Incorrect value")
+        } else {                        //иначе раздизэйбливаем
             setStartValue(Number(start))
-            //setMessage()
-            setDisabled(!disabled)
+            setMessage("correct") //иначе если корректно раздизэйбливаем каунтер и кнопку инкримент
+            setDisabled('set')
+            setDisabled('inc')
         }
     }
 
@@ -37,22 +42,22 @@ function App() {
     }
 
     const changeIncrement = (change: string) => {
-         setNumber(Number(change))
+        setIncValue(Number(change))
     }
 
     const clickIncrement = () => {
-        if (number < 5) {
-            setNumber(number + 1)
-        } else {
-            setDisabled(!disabled)
+        if (incValue < maxValue) { //если инкремент меньше максимального значения, то добавляем единицу
+            setIncValue(incValue + 1)
+        } else {                    //иначе число становится красным и раздизэйбливается ресет
             setMessage("Incorrect values")
+            setDisabled("reset")
         }
     }
 
     const resetIncrement = () => {
         setMessage("")
-        setDisabled(false)
-        setNumber(0)
+        setDisabled('inc')
+        setIncValue(startValue)
     }
 
     return (
@@ -68,7 +73,7 @@ function App() {
                     message={message}
                 />
                 <Counter
-                    value={number}
+                    incValue={incValue}
                     changeIncrement={changeIncrement}
                     clickIncrement={clickIncrement}
                     resetIncrement={resetIncrement}
