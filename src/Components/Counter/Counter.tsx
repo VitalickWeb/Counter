@@ -26,13 +26,13 @@ export const Counter = ({
         <div className={st.blockCounter}>
             <div className={st.subBlockCounter}>
                 <div className={st.inputInc}>
-                    <SuperInput
+                    { disabled !== "error" ? <SuperInput
                         className={message === "Incorrect values" ? st.error : ""}
-                        message={message  === "correct" ? "inc" : ""}
+                        message={message  === "" ? "inc" : ""}
                         type={"text"}
                         incValue={incValue}
                         changeIncrement={changeIncrement}
-                    />
+                    /> : <div className={st.inputIncorrect}>{message}</div> }
                 </div>
             </div>
             <div className={st.blockButtons}>

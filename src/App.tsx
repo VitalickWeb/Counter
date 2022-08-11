@@ -28,11 +28,9 @@ function App() {
             setStartValue(Number(start))
             setDisabled('error')//дизэйблим кнопки set и inc
             setMessage("Incorrect values") // пооказываем надпись что значение не корректное
-            setDisabled("Incorrect value")
         } else {                        //иначе раздизэйбливаем
             setStartValue(Number(start))
-            setMessage("correct") //иначе если корректно раздизэйбливаем каунтер и кнопку инкримент
-            setDisabled('set')
+            setMessage("correct") //иначе если корректно, раздизэйбливаем каунтер и кнопку инкримент
             setDisabled('inc')
         }
     }

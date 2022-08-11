@@ -9,6 +9,7 @@
     -moz-box-shadow: 0px 0px 20px 1px rgba(231, 237, 242, 0.64);
     box-shadow: 0px 0px 20px 1px rgba(231, 237, 242, 0.64);
 }
+
 .subBlockCounter {
     border-radius: 8px;
 }
@@ -23,6 +24,19 @@
     border: 1px solid gold;
     border-radius: 8px;
     font-size: 24px;
+}
+
+.inputIncorrect {
+    padding: 30px 0 36px 0;
+    text-align: center;
+    outline: none;
+    background-color: #666677;
+    color: gold;
+    height: auto;
+    border: 1px solid gold;
+    border-radius: 8px;
+    font-size: 24px;
+    color: salmon;
 }
 
 .blockCounter .blockButtons {
@@ -106,5 +120,5 @@ button:hover {
 }
 
 .inputInc input.error {
-    color: #ff5757;
+    color: salmon;
 }
