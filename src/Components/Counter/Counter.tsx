@@ -19,7 +19,7 @@ export const Counter = ({
                             changeIncrement,
                             resetIncrement,
                             disabled,
-                            message
+                            message,
                         }: CounterValuePropsType) => {
 
     return (
@@ -28,7 +28,7 @@ export const Counter = ({
                 <div className={st.inputInc}>
                     { disabled !== "error" ? <SuperInput
                         className={message === "Incorrect values" ? st.error : ""}
-                        message={message  === "" ? "inc" : ""}
+                        message={message === "enter values and press 'set'" ? st.color : ''}
                         type={"text"}
                         incValue={incValue}
                         changeIncrement={changeIncrement}

@@ -4,7 +4,7 @@ import {Counter} from "./Components/Counter/Counter";
 import {SettingsCounter} from "./Components/SettingsCounter/SettingsCounter";
 import st from './App.module.css'
 
-export type WordFilter = "set" | "inc" | "reset" | "error" | "Incorrect value"
+export type WordFilter = "set" | "inc" | "reset" | "error" | "Incorrect value" | "enter values and press 'set'"
 
 function App() {
     const [maxValue, setMaxValue] = useState(5)
@@ -12,15 +12,19 @@ function App() {
     const [incValue, setIncValue] = useState(0)//исходный state счетчика прокидывается в input
     const [disabled, setDisabled] = useState<WordFilter>('inc')
     const [message, setMessage] = useState('')
-    const [undefinedMax, setUndefinedMax] = useState(5)
-    const [undefinedMin, setUndefinedMin] = useState(0)
 
     useEffect(() => {
-        localStorage.setItem('counterValue', JSON.stringify(incValue))
+        localStorage.setItem("counterValue", JSON.stringify(incValue))
     }, [incValue])
 
     const maxPointReference = (max: string) => {
-        setMaxValue(Number(max))
+        if (maxValue < 5) {             //если максимальное значение меньше 5ти, то считаем до пяти
+            setMaxValue(Number(max))
+            setMessage("enter values and press 'set'")
+        } else {                        //иначе если больше 5ти
+            setMaxValue(Number(max))
+
+        }
     }
 
     const referencePoint = (start: string) => {
@@ -30,8 +34,8 @@ function App() {
             setMessage("Incorrect values") // пооказываем надпись что значение не корректное
         } else {                        //иначе раздизэйбливаем
             setStartValue(Number(start))
-            setMessage("correct") //иначе если корректно, раздизэйбливаем каунтер и кнопку инкримент
-            setDisabled('inc')
+            setDisabled('set')//иначе если корректно, раздизэйбливаем кнопку 'set'
+            setMessage("enter values and press 'set'") // и выводим сообщение
         }
     }
 

@@ -10,6 +10,7 @@ export type IncrementPropsType = {
 }
 
 export const SuperInput = ({incValue, type, changeIncrement, className}: IncrementPropsType) => {
+
     const changeIncrementHandler = (e: ChangeEvent<HTMLInputElement>) => {
         changeIncrement(e.currentTarget.value)
     }

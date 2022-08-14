@@ -21,7 +21,7 @@ export const SettingsCounter = ({
                                     referencePoint,
                                     setLocalStorage,
                                     disabled,
-                                    message
+                                    message,
                                 }: SettingsCounterPropsType) => {
     return (
         <div className={st.blockSettings}>
@@ -33,7 +33,7 @@ export const SettingsCounter = ({
                         </div>
                         <div className={st.itemInput}>
                             <SuperInput
-                                className={maxValue < 0 ? st.errorValue : ''}
+                                className={maxValue <= startValue ? st.errorValue : ''}
                                 message={message}
                                 type={'number'}
                                 incValue={maxValue}
@@ -48,7 +48,7 @@ export const SettingsCounter = ({
                         </div>
                         <div>
                             <SuperInput
-                                className={startValue < 0 ? st.errorValue : ''}
+                                className={startValue >= maxValue ? st.errorValue : ''}
                                 message={message}
                                 type={'number'}
                                 incValue={startValue}
