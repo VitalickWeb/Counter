@@ -12,6 +12,7 @@ export type SettingsCounterPropsType = {
     setLocalStorage: () => void
     disabled: WordFilter
     message: string
+    error: boolean
 }
 
 export const SettingsCounter = ({
@@ -22,6 +23,7 @@ export const SettingsCounter = ({
                                     setLocalStorage,
                                     disabled,
                                     message,
+                                    error
                                 }: SettingsCounterPropsType) => {
     return (
         <div className={st.blockSettings}>
@@ -35,7 +37,7 @@ export const SettingsCounter = ({
                             <SuperInput
                                 className={maxValue <= startValue ? st.errorValue : ''}
                                 message={message}
-                                type={'number'}
+                                type="number"
                                 incValue={maxValue}
                                 changeIncrement={maxPointReference}
                             />
@@ -48,11 +50,12 @@ export const SettingsCounter = ({
                         </div>
                         <div>
                             <SuperInput
-                                className={startValue >= maxValue ? st.errorValue : ''}
+                                className={startValue >= maxValue ? st.errorValue : st.inputStart}
                                 message={message}
                                 type={'number'}
                                 incValue={startValue}
                                 changeIncrement={referencePoint}
+                                error={error}
                             />
                         </div>
                     </div>

@@ -7,11 +7,13 @@ import st from './App.module.css'
 export type WordFilter = "set" | "inc" | "reset" | "error" | "Incorrect value" | "enter values and press 'set'"
 
 function App() {
-    const [maxValue, setMaxValue] = useState(5)
-    const [startValue, setStartValue] = useState(0)
-    const [incValue, setIncValue] = useState(0)//исходный state счетчика прокидывается в input
+    const [maxValue, setMaxValue] = useState<number>(5)
+    const [startValue, setStartValue] = useState<number>(0)
+    const [incValue, setIncValue] = useState<number>(0)//исходный state счетчика прокидывается в input
     const [disabled, setDisabled] = useState<WordFilter>('inc')
-    const [message, setMessage] = useState('')
+    const [message, setMessage] = useState<string>('')
+    const [error, setError] = useState<boolean>(false)
+
 
     useEffect(() => {
         localStorage.setItem("counterValue", JSON.stringify(incValue))
@@ -32,10 +34,12 @@ function App() {
             setStartValue(Number(start))
             setDisabled('error')//дизэйблим кнопки set и inc
             setMessage("Incorrect values") // пооказываем надпись что значение не корректное
+            setError(true) //ошибку переводим в тру
         } else {                        //иначе раздизэйбливаем
             setStartValue(Number(start))
             setDisabled('set')//иначе если корректно, раздизэйбливаем кнопку 'set'
             setMessage("enter values and press 'set'") // и выводим сообщение
+            setError(false)
         }
     }
 
@@ -73,6 +77,7 @@ function App() {
                     setLocalStorage={setLocalStorage}
                     disabled={disabled}
                     message={message}
+                    error={error}
                 />
                 <Counter
                     incValue={incValue}
