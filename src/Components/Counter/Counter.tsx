@@ -22,17 +22,21 @@ export const Counter = ({
                             message,
                         }: CounterValuePropsType) => {
 
+    let styleInput = `${st.inputIncorrect} ${disabled === "set" && st.inputCorrect}`//тоже-самое что и css селекторы применять по наследству
+
     return (
         <div className={st.blockCounter}>
             <div className={st.subBlockCounter}>
                 <div className={st.inputInc}>
-                    { disabled !== "error" ? <SuperInput
-                        className={message === "Incorrect values" ? st.error : ""}
-                        message={message === "enter values and press 'set'" ? st.color : ''}
-                        type={"text"}
-                        incValue={incValue}
-                        changeIncrement={changeIncrement}
-                    /> : <div className={st.inputIncorrect}>{message}</div> }
+                    { disabled === "error" || disabled === "set"
+                        ? <div className={styleInput}>{message}</div>
+                        : <SuperInput
+                            className={message === "Incorrect values" ? st.error : ""}
+                            message={message}
+                            type={"text"}
+                            incValue={incValue}
+                            changeIncrement={changeIncrement}
+                        /> }
                 </div>
             </div>
             <div className={st.blockButtons}>
@@ -41,7 +45,7 @@ export const Counter = ({
                         <SuperButton
                             name={'inc'}
                             clickIncrement={clickIncrement}
-                            disabled={disabled === 'set' || message === "Incorrect values" || disabled === 'error'}
+                            disabled={disabled === 'set' || message === 'Incorrect values' || disabled === 'error'}
                         />
                     </div>
                 </div>

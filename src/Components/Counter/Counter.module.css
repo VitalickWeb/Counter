@@ -42,7 +42,9 @@
     color: salmon;
     box-sizing: border-box;
 }
-.color {
+
+.inputCorrect {
+    font-size: 22px;
     color: gold;
 }
 
